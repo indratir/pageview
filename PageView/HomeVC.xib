@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="PageView" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="cBv-jL-R5x" id="JRy-KP-LvM"/>
+                <outlet property="headerView" destination="yMT-8u-QnK" id="Fbi-fE-AK8"/>
+                <outlet property="headerViewTop" destination="bEP-TE-oGe" id="axU-Dg-5l8"/>
+                <outlet property="stickyView" destination="Uro-by-E4l" id="052-7q-Hrl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBv-jL-R5x">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMT-8u-QnK" userLabel="HeaderView">
+                    <rect key="frame" x="0.0" y="44" width="414" height="112"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m10-tm-u83">
+                            <rect key="frame" x="159" y="8" width="96" height="96"/>
+                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="96" id="Vzc-OJ-Q4O"/>
+                                <constraint firstAttribute="width" constant="96" id="lxB-dd-h2w"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="48"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="m10-tm-u83" secondAttribute="bottom" constant="8" id="4sb-77-vu5"/>
+                        <constraint firstItem="m10-tm-u83" firstAttribute="centerX" secondItem="yMT-8u-QnK" secondAttribute="centerX" id="EZJ-ZH-AGF"/>
+                        <constraint firstItem="m10-tm-u83" firstAttribute="top" secondItem="yMT-8u-QnK" secondAttribute="top" constant="8" id="Z0q-CX-apf"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uro-by-E4l" userLabel="StickyView">
+                    <rect key="frame" x="0.0" y="156" width="414" height="48"/>
+                    <color key="backgroundColor" systemColor="systemTealColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="Xty-qB-hGj"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="cBv-jL-R5x" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="64i-SB-bif"/>
+                <constraint firstItem="cBv-jL-R5x" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="MHj-qb-pXn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yMT-8u-QnK" secondAttribute="trailing" id="Mzb-2v-t8f"/>
+                <constraint firstItem="yMT-8u-QnK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NVG-3u-jF9"/>
+                <constraint firstItem="Uro-by-E4l" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ZVs-hN-OCf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cBv-jL-R5x" secondAttribute="trailing" id="ahT-gg-bBv"/>
+                <constraint firstItem="yMT-8u-QnK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bEP-TE-oGe"/>
+                <constraint firstItem="Uro-by-E4l" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hJ9-AD-Jey"/>
+                <constraint firstItem="Uro-by-E4l" firstAttribute="top" secondItem="yMT-8u-QnK" secondAttribute="bottom" id="lkH-68-mDa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cBv-jL-R5x" secondAttribute="bottom" id="mFP-Z8-N31"/>
+            </constraints>
+            <point key="canvasLocation" x="101" y="205"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
