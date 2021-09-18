@@ -7,7 +7,7 @@
 
 import UIKit
 
-var currentOffset: CGFloat = 0.0
+var currentOffset: CGPoint = CGPoint(x: 0, y: 0)
 
 class HomeVC: UIViewController {
     
@@ -26,6 +26,9 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let topInset = headerView.frame.height + stickyView.frame.height
+        currentOffset = CGPoint(x: 0, y: -topInset)
+        
         setupPageViewController()
         populateContainerView()
     }
@@ -99,14 +102,19 @@ extension HomeVC: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 }
 
 extension HomeVC: ContentViewScrollDelegate {
-    var currentHeaderHeight: CGFloat {
+    var headerStickyHeight: CGFloat {
         return headerView.frame.height + stickyView.frame.height
     }
     
-    func didScroll(offset: CGFloat) {
-        if (-offset) <= headerView.frame.height {
-            headerViewTop.constant = offset
-            view.layoutIfNeeded()
+    var stickyHeight: CGFloat {
+        return stickyView.frame.height
+    }
+    
+    func didScroll(offsetY: CGFloat) {
+        let _headerViewTop = headerView.frame.height + stickyView.frame.height + offsetY
+        
+        if _headerViewTop <= headerView.frame.height {
+            headerViewTop.constant = (-_headerViewTop)
         }
     }
 }

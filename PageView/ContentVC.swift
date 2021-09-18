@@ -13,9 +13,10 @@ enum ContentViewScrollDirection {
 }
 
 protocol ContentViewScrollDelegate: AnyObject {
-    var currentHeaderHeight: CGFloat { get }
+    var headerStickyHeight: CGFloat { get }
+    var stickyHeight: CGFloat { get }
     
-    func didScroll(offset: CGFloat)
+    func didScroll(offsetY: CGFloat)
 }
 
 class ContentVC: UIViewController {
@@ -30,6 +31,7 @@ class ContentVC: UIViewController {
     private var scrollDirection: ContentViewScrollDirection = .up
     private var oldContentOffset = CGPoint.zero
     private let refreshControl = UIRefreshControl()
+    private var isReady = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +47,7 @@ class ContentVC: UIViewController {
         tableView.refreshControl = refreshControl
         tableView.showsVerticalScrollIndicator = false
         
-        if let topInset = scrollDelegate?.currentHeaderHeight {
+        if let topInset = scrollDelegate?.headerStickyHeight {
             tableView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
             refreshControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 24).isActive = true
             refreshControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -58,11 +60,22 @@ class ContentVC: UIViewController {
         }
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        tableView.setContentOffset(CGPoint(x: 0, y: currentOffset), animated: false)
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        isReady = true
+        let topInset = scrollDelegate?.headerStickyHeight ?? 0.0
+        
+        if currentOffset.y <= topInset {
+            tableView.setContentOffset(currentOffset, animated: false)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        isReady = false
+    }
 
 }
 
@@ -81,11 +94,13 @@ extension ContentVC: UITableViewDelegate, UITableViewDataSource {
     
     // MARK:- Scroll delegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
-        if let topInset = scrollDelegate?.currentHeaderHeight {
-            let distance = topInset + scrollView.contentOffset.y
+        if isReady {
+            scrollDelegate?.didScroll(offsetY: scrollView.contentOffset.y)
             
-            scrollDelegate?.didScroll(offset: -distance)
+            if let stickyHeight = scrollDelegate?.stickyHeight,
+               scrollView.contentOffset.y <= (-stickyHeight) {
+                currentOffset = scrollView.contentOffset
+            }
         }
     }
 }
