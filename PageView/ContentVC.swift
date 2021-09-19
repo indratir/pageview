@@ -7,28 +7,19 @@
 
 import UIKit
 
-enum ContentViewScrollDirection {
-    case up
-    case down
-}
-
 protocol ContentViewScrollDelegate: AnyObject {
-    var headerStickyHeight: CGFloat { get }
-    var stickyHeight: CGFloat { get }
-    
-    func didScroll(offsetY: CGFloat)
+    func onScroll(offsetY: CGFloat)
 }
 
 class ContentVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    weak var scrollDelegate: ContentViewScrollDelegate?
+    weak var scrollDelegate: HomeViewScrollDelegate?
     var numberOfCells = 30
     var backgroundColor = UIColor.systemBackground
     var prefixCell = "Item"
     
-    private var scrollDirection: ContentViewScrollDirection = .up
     private var oldContentOffset = CGPoint.zero
     private let refreshControl = UIRefreshControl()
     private var isReady = false
@@ -64,6 +55,7 @@ class ContentVC: UIViewController {
         super.viewWillAppear(animated)
         
         isReady = true
+        scrollDelegate?.setPanGesture(tableView.panGestureRecognizer)
         let topInset = scrollDelegate?.headerStickyHeight ?? 0.0
         
         if currentOffset.y <= topInset {

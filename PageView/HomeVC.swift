@@ -9,6 +9,14 @@ import UIKit
 
 var currentOffset: CGPoint = CGPoint(x: 0, y: 0)
 
+protocol HomeViewScrollDelegate: AnyObject {
+    var headerStickyHeight: CGFloat { get }
+    var stickyHeight: CGFloat { get }
+    
+    func didScroll(offsetY: CGFloat)
+    func setPanGesture(_ panGesture: UIPanGestureRecognizer)
+}
+
 class HomeVC: UIViewController {
     
     // MARK:- Outlets
@@ -20,7 +28,11 @@ class HomeVC: UIViewController {
     
     // MARK:- Programmatic UI
     var pageViewController = UIPageViewController()
-    var contentsViewController = [UIViewController]()
+    var contentsViewController = [ContentVC]()
+    
+    var dragInitialY: CGFloat = 0
+    var dragPreviousY: CGFloat = 0
+    var viewPanGesture: UIPanGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +113,7 @@ extension HomeVC: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     }
 }
 
-extension HomeVC: ContentViewScrollDelegate {
+extension HomeVC: HomeViewScrollDelegate {
     var headerStickyHeight: CGFloat {
         return headerView.frame.height + stickyView.frame.height
     }
@@ -116,5 +128,14 @@ extension HomeVC: ContentViewScrollDelegate {
         if _headerViewTop <= headerView.frame.height {
             headerViewTop.constant = (-_headerViewTop)
         }
+    }
+    
+    func setPanGesture(_ panGesture: UIPanGestureRecognizer) {
+        if let gesture = viewPanGesture {
+            view.removeGestureRecognizer(gesture)
+        }
+        
+        self.viewPanGesture = panGesture
+        view.addGestureRecognizer(viewPanGesture!)
     }
 }

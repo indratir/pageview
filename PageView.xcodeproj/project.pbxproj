@@ -15,6 +15,7 @@
 		2D8A3DF726F2BB4500ECFEE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A3DF626F2BB4500ECFEE5 /* SceneDelegate.swift */; };
 		2D8A3DFE26F2BB4600ECFEE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A3DFD26F2BB4600ECFEE5 /* Assets.xcassets */; };
 		2D8A3E0126F2BB4600ECFEE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A3DFF26F2BB4600ECFEE5 /* LaunchScreen.storyboard */; };
+		81D5E42326F6DB9500FF68E4 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5E42226F6DB9500FF68E4 /* CustomTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		2D8A3DFD26F2BB4600ECFEE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D8A3E0026F2BB4600ECFEE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D8A3E0226F2BB4600ECFEE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81D5E42226F6DB9500FF68E4 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				2D09C6E826F2CC5800AAE91D /* HomeVC.xib */,
 				2D09C6EF26F2D22A00AAE91D /* ContentVC.swift */,
 				2D09C6F026F2D22A00AAE91D /* ContentVC.xib */,
+				81D5E42226F6DB9500FF68E4 /* CustomTableView.swift */,
 			);
 			path = PageView;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81D5E42326F6DB9500FF68E4 /* CustomTableView.swift in Sources */,
 				2D09C6E926F2CC5800AAE91D /* HomeVC.swift in Sources */,
 				2D8A3DF526F2BB4500ECFEE5 /* AppDelegate.swift in Sources */,
 				2D09C6F126F2D22A00AAE91D /* ContentVC.swift in Sources */,
